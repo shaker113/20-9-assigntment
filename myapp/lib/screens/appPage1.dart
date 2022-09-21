@@ -29,18 +29,11 @@ class _appPage1State extends State<appPage1> {
         actions: [
           TextButton.icon(
             onPressed: () {
-              setState(
-                () {
-                  Navigator.pop(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return homepage();
-                      },
-                    ),
-                  );
-                },
-              );
+              setState(() {
+                Navigator.popUntil(
+                    context, ModalRoute.withName(Navigator.defaultRouteName));
+                // Navigator.of(context).popUntil((route) => route.isFirst); could also work
+              });
             },
             icon: Icon(
               Icons.logout,
@@ -132,7 +125,7 @@ class _appPage1State extends State<appPage1> {
                     width: double.infinity,
                     height: 300,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
+                      borderRadius: BorderRadius.circular(7),
                       image: DecorationImage(
                         image: NetworkImage(
                             "https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg"),
